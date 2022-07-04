@@ -1,0 +1,162 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": 
+  [
+
+    {
+      "alignment": "left",
+      "segments": 
+      [
+
+        {
+          "background": "#f1184c",
+          "foreground": "#242424",
+          "leading_diamond": "",
+          "style": "powerline",
+          "template": "\uf0e7",
+          "type": "root"
+        },
+
+        {
+          "background": "#282c34",
+          "foreground": "#3A86FF",       
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
+          "trailing_diamond": "\ue0b4",            
+          "type": "os"
+        },
+
+        {
+          "background": "#292929",
+          "foreground": "#fb7e14",
+          "powerline_symbol": "\ue0c4",
+          "properties":
+          {
+            "style": "austin",
+            "leading_diamond": "\ue0b6", 
+            "threshold": 1
+          },
+
+          "style": "powerline",
+          "template": " {{ if .SSHSession }} {{ end }}{{ .UserName }}@{{ .HostName }} <#fb7e14> \ue0b3 </> ",
+          "type": "session"
+        },
+
+        {
+          "background": "#8800bb",
+          "foreground": "#33DD2D",
+          "powerline_symbol": "\ue0c4",
+          "properties":
+          {
+            "folder_separator_icon": "/",
+            "style": "folder"
+          },
+          "style": "powerline",
+          "template": "\ue5ff {{ .Path }} ",
+          "type": "path"
+        },
+
+        {
+          "background": "#242424",
+          "foreground": "#3A86FF",
+          "powerline_symbol": "\ue0c4",
+          "properties":
+          {
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+
+          "style": "powerline",
+          "template": " \ue0b3 {{ .UpstreamIcon }}{{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
+          "type": "git"
+        },
+
+        {
+          "background": "#0184bc",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0c4",
+          "style": "powerline",
+          "template": " \ue70c {{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }} ",
+          "type": "dotnet"
+        },
+
+        {
+          "background": "#33DD2D",
+          "background_templates": 
+          [
+
+            "{{ if gt .Code 0 }}#f1184c{{ end }}"
+          ],
+
+          "foreground": "#242424",
+          "powerline_symbol": "\ue0b4",
+          "style": "powerline",
+          "template": " \uf7d4 ",
+          "type": "exit"
+        }
+      ],
+
+      "type": "prompt"
+    },
+
+
+    {
+      "alignment": "right",
+      "segments": 
+      [
+        {
+          "background": "#8800dd",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0c4",
+          "properties": 
+          {
+            "style": "austin",
+            "threshold": 1
+          },
+
+          "style": "powerline",
+          "template": " <#fefefe>\ufbab</> {{ .FormattedMs }} ",
+          "type": "executiontime"
+        },
+
+        {
+          "background": "#292929",
+          "foreground": "#fb7e14",
+          "properties": 
+          {
+            "time_format": "15:04:05"
+          },
+
+          "style": "diamond",
+          "template": "{{ .CurrentDate | date .Format }} \uf017 ",
+          "trailing_diamond": "\ue0b4",
+          "type": "time"
+        }
+      ],
+
+      "type": "prompt"
+
+    },
+
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": 
+      [
+        {
+          "foreground": "#f1184c",
+          "style": "plain",
+          "template": "\u279c ",
+          "type": "text"
+        }
+      ],
+
+      "type": "prompt"
+    }
+  ],
+
+  "console_title_template": "{{if .Root}}(Admin) {{end}}{{.Folder}}",
+  "version": 2
+}
